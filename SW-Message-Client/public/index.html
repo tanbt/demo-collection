@@ -8,7 +8,8 @@
 </head>
 <body>
 Home page
-
+<br/>
+<button onclick="tell_sw_to_broadcast();">Tell SW to broadcast all Clients.</button>
 <footer>
   <ul>
     <li><a href="/index.html">Home</a></li>
@@ -19,6 +20,14 @@ Home page
 <script src="js/app.js"></script>
 <script>
   send_message_to_sw("Home page", "Hello 1").then(m => console.log(m));
+
+  if('serviceWorker' in navigator){
+    // Handler for messages coming from the service worker
+    navigator.serviceWorker.addEventListener('message', function(event){
+      console.log("HOME PAGE Received Message: " + event.data);
+      event.ports[0].postMessage("HOME PAGE Says 'Hello back!'");
+    });
+  }
 </script>
 </body>
 </html>

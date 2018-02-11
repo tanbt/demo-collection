@@ -19,6 +19,14 @@ About us
 <script src="js/app.js"></script>
 <script>
   send_message_to_sw("Help page", "Hello 2").then(m => console.log(m));
+
+  if('serviceWorker' in navigator){
+    // Handler for messages coming from the service worker
+    navigator.serviceWorker.addEventListener('message', function(event){
+      console.log("HELP PAGE Received Message: " + event.data);
+      event.ports[0].postMessage("HELP PAGE Says 'Hello back!'");
+    });
+  }
 </script>
 </body>
 </html>

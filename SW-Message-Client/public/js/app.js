@@ -22,6 +22,15 @@ function send_message_to_sw(page, msg) {
     };
 
     // Send message to service worker along with port for reply
-    navigator.serviceWorker.controller.postMessage(page + " says '" + msg + "'", [msg_chan.port2]);
+    if (navigator.serviceWorker.controller != null) {
+      navigator.serviceWorker.controller.postMessage(page + " says '" + msg + "'", [msg_chan.port2]);
+    }
   });
+}
+
+function tell_sw_to_broadcast() {
+  var msg_chan = new MessageChannel();
+  if (navigator.serviceWorker.controller != null) {
+    navigator.serviceWorker.controller.postMessage("broadcast", [msg_chan.port2]);
+  }
 }
