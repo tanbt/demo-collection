@@ -18,7 +18,7 @@ Home page
 
 <script src="js/app.js"></script>
 <script>
-  send_message_to_sw("Home page", "Hello 1");
+  send_message_to_sw("Home page", "Hello 1").then(m => console.log(m));
 </script>
 </body>
 </html>
