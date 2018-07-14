@@ -12,9 +12,11 @@
 
 <body>
     <div ng-controller="Ctrl">
-        <h2 id="{{headline}}">{{headline}}</h2>
-        <p>{{paragraph}}</p>
-        <p>{{namespaced_paragraph}}</p>
+        <h2 id="{{ 'HEADLINE' | translate }}">{{ 'HEADLINE' | translate }}</h2>
+        <p>{{ 'PARAGRAPH' | translate }}</p>
+        <p>{{ 'NAMESPACE.PARAGRAPH' | translate }}</p>
+        <button ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN"></button>
+        <button ng-click="changeLanguage('vi')" translate="BUTTON_LANG_VI"></button>
     </div>
 </body>
 
