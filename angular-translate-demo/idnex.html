@@ -1,0 +1,21 @@
+<!doctype html>
+<html ng-app="myApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS translation demo</title>
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-translate/dist/angular-translate.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <div ng-controller="Ctrl">
+        <h2 id="{{headline}}">{{headline}}</h2>
+        <p>{{paragraph}}</p>
+        <p>{{namespaced_paragraph}}</p>
+    </div>
+</body>
+
+</html>
