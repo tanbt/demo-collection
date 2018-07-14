@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Jquery Translate.js</title>
+</head>
+
+<body>
+
+    <div>
+        <span class="trn">Hello</span>,
+        <span class="trn">Translate library</span>.
+        <div class="trn" data-trn-key="des">description here</div>
+    </div>
+
+    <div style="padding-top: 20px">
+        <button onclick="translator.lang('en');">To English</button> &nbsp;&nbsp;&nbsp;
+        <button onclick="translator.lang('vi');">To Vietnamese</button>
+        <br/><br/>
+        <button onclick="append()">Change language then click me</button>
+    </div>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery.translate.js"></script>
+    <script>
+        var dict = {
+            'Hello': {
+                'vi': "Xin chào",
+            },
+            'Translate library': {
+                'vi': "Thư viện dịch",
+                'en': "translate library"
+            },
+            des: {
+                'en': 'I\'m using jquery translation lib.',
+                'vi': 'Tôi đang dùng thư viện dịch.'
+            }
+        };
+
+        var translator = $('body').translate({ lang: "en", t: dict });
+
+        function append() {
+            var el = document.createElement("div")
+            el.innerHTML = "Get from js: " + translator.get("Hello");
+            document.querySelector("body").appendChild(el);
+        };
+    </script>
+</body>
+
+</html>
