@@ -24,11 +24,21 @@ app.config(['$translateProvider', function ($translateProvider) {
     $translateProvider
         .translations('en', translationsEn)
         .translations('vi', translationsVi)
-        .preferredLanguage('vi')
+        .preferredLanguage(window.location.href.substr(window.location.href.length-2))
         .fallbackLanguage('en');
 }]);
 
 app.controller('Ctrl', ['$translate', '$scope', function ($translate, $scope) {
+    $translate(['HEADLINE', 'PARAGRAPH', 'NAMESPACE.PARAGRAPH']).then(function (translations) {
+        $scope.headline = translations.HEADLINE;
+        $scope.paragraph = translations.PARAGRAPH;
+        $scope.namespaced_paragraph = translations['NAMESPACE.PARAGRAPH'];
+      }, function (translationIds) {
+        $scope.headline = translationIds.headline;
+        $scope.paragraph = translationIds.paragraph;
+        $scope.namespaced_paragraph = translationIds.namespaced_paragraph;
+      });
+
     $scope.changeLanguage = function (langKey) {
         $translate.use(langKey);
     };
