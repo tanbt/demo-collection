@@ -4,15 +4,19 @@
 <head>
     <meta charset="utf-8">
     <title>Simple DOM example</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
+    <div class='title'>Custom element</div>
     <section>
-        <img src="images/dinosaur.png" width="200" height="200" alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">
-        <p>Here we will add a link to the <a href="https://www.mozilla.org/">Mozilla homepage</a></p>
+        Enter card title: <input type="text" name="card_name" id="card_name" autofocus value="the title"/><br/>
+        Enter card detail: <textarea cols="15" rows="4" id="card_detail">the description</textarea>
+        <br/><br/>
+        <button onclick="addCard()">Add new card</button>
+
+        <div id="card_container"></div>
     </section>
-
-
     <script src="js/app.js"></script>
 </body>
 

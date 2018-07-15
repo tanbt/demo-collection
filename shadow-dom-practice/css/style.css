@@ -1,0 +1,11 @@
+.title {
+    font-size: 2em
+}
+
+#card_container {
+    margin-top: 20px;
+    width: 100%;
+    min-height: 500px;
+    background-color: rgba(190, 224, 224, 0.466);
+    padding: 20px;
+}
