@@ -20,6 +20,12 @@ div {
 .wrapper {
   display: grid;
   grid-template-rows: auto;
+  width: 90%;
+}
+.content aside {place-self: center}
+.sidebar {display: grid;}
+.sidebar img {
+  align-self: end;
 }
 
 @media only screen and (min-width: 480px) {
@@ -39,7 +45,6 @@ div {
 @media only screen and (min-width: 960px) {
 /*@formatter:on*/
   .wrapper {
-    width: 90%;
     margin: 0 auto;
     border: 1px solid #AAA;
 
