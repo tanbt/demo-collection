@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
+div {
+  border: 1px solid #00A;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 200px 70px [col3-start] 200px 70px;
+  grid-template-rows: auto 50px auto;
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+}
+
+.item-10 {
+  grid-column: 1/2; /*start counting from 1*/
+  grid-row: 1/2
+}
+
+.item-1 {
+  grid-area: 2/4/3/2; /*top right bottom left , just like padding or margin*/
+}
+
+.item-3 {
+  grid-column: col3-start / span 2;
+}
+
+.item-6 {
+  grid-column: span 2; /*syntax: [start col /] span number */
+}
+
+.item-8 {
+  grid-row: span 2; /*start column|row is optional*/
+}

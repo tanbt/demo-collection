@@ -6,28 +6,40 @@ div {
   border: 1px solid #00A;
 }
 
-.container {
+/* define areas */
+/*@formatter:off*/
+.main-header {grid-area: header;}
+.content {grid-area: content;}
+.sidebar {grid-area: sidebar;}
+.main-footer {grid-area: footer;}
+
+.content .h3 {grid-area: content-header;}
+.content .primary {grid-area: content-primary;}
+.content aside {grid-area: content-secondary}
+/*@formatter:on*/
+.wrapper {
   display: grid;
-  grid-template-columns: 200px 70px [col3-start] 200px 70px;
-  grid-template-rows: auto 50px auto;
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid #AAA;
+  grid-template-rows: auto;
+
+  /*@formatter:off*/
+  grid-template-columns: 9fr 3fr;
+  grid-template-areas: "header header"
+  "content sidebar"
+  "footer footer";
+  grid-column-gap: 30px;
+  /*@formatter:on*/
 }
 
-.item-10 {
-  grid-column: 1/2; /*start counting from 1*/
-  grid-row: 1/2
+.content {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 9fr 10px 3fr;
+  /*@formatter:off*/
+  grid-template-areas:
+      "content-header content-header content-header"
+      "content-primary . content-secondary";
+  /*@formatter:on*/
 }
-
-.item-1 {
-  grid-area: 2/4/3/2; /*top right bottom left , just like padding or margin*/
-}
-
-.item-3{
-  grid-column: col3-start / span 2;
-}
-.item-6 {
-  grid-column: span 2; /*syntax: [start col /] span number */
-}
-.item-8 {
-  grid-row: span 2; /*start column|row is optional*/
-}
-
