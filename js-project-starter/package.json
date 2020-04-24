@@ -4,10 +4,11 @@
   "description": "Setting up js project with test, bundling, TS and so on",
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
-    "test": "mocha"
+    "test": " node --experimental-modules ./node_modules/mocha/bin/mocha"
   },
   "author": "Tan Bui",
   "license": "ISC",
+  "type": "module",
   "devDependencies": {
     "mocha": "^7.1.1",
     "webpack": "^4.43.0",
