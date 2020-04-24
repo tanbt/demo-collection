@@ -1,10 +1,12 @@
-import assert from 'assert';
+import 'chai/register-expect.js';
 import {sum} from '../src/sum.js';
 
-describe('Array', function() {
-  describe('#indexOf()', function() {
+describe('Calculator', function() {
+
+  describe('Sum calculation', function() {
     it('should return -1 when the value is not present', function() {
-      assert.equal(3, sum(1,2));
+      expect(sum(1,3)).to.be.equal(4);
     });
   });
+
 });
