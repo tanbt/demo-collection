@@ -5,3 +5,6 @@ setTimeout(() => {
   const h1 = document.querySelector('h1');
   h1.innerText += " (from JS)";
 }, 1000);
+
+import {runApp} from './app.js';
+runApp();
