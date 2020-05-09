@@ -4,7 +4,12 @@
 setTimeout(() => {
   const h1 = document.querySelector('h1');
   h1.innerText += " (from JS)";
-}, 1000);
+}, 500);
 
 import {renderConsole} from './app.js';
 console.log(renderConsole());
+
+(async() => {
+  const app = await import('./app.js');
+  document.getElementById('placeholder').innerHTML = app.printHtml();
+})();

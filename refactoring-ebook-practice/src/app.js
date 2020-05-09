@@ -23,7 +23,7 @@ function renderPlainText(data) {
 
 function renderHtml(data) {
   let result = `<h1>Statement for ${data.customer}<h1>`;
-  result += "<table>\n";
+  result += "<table border='1'>\n";
   result += "<tr><th>play</th><th>seats</th><th>cost</th></tr>\n";
   for (let perf of data.performances) {
     result += `  <tr><td>${perf.play.name}</td> <td>${perf.audience}</td>`;
