@@ -2,10 +2,27 @@ import getPlays from './data/plays.js';
 import getInvoices from './data/invoices.js';
 
 function statement(invoice, plays) {
-  let result = `\nStatement for ${invoice.customer}\n`;
+  const statementData = {};
+  statementData.customer = invoice.customer;
+  statementData.performances = invoice.performances.map(enrichPerformance);
+  return renderPlainText(statementData, invoice, plays);
 
-  for (let perf of invoice.performances) {
-    result += `  ${playFor(perf).name}: ${usd(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
+  function enrichPerformance(aPerformance) {
+    const result = Object.assign({}, aPerformance);
+    result.play = playFor(result);
+    return result;
+  };
+  
+  function playFor(aPerformance) {
+    return plays[aPerformance.playID];
+  }
+}
+
+function renderPlainText(data, invoice, plays) {
+  let result = `\nStatement for ${data.customer}\n`;
+
+  for (let perf of data.performances) {
+    result += `  ${perf.play.name}: ${usd(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
   }
   result += `Amount owed is ${usd(totalAmount() / 100)}\n`;
   result += `You earned ${totalVolumeCredits()} credits\n`;
@@ -14,7 +31,7 @@ function statement(invoice, plays) {
   function amountFor(aPerformance) {
     let result = 0;
 
-    switch (playFor(aPerformance).type) {
+    switch (aPerformance.play.type) {
       case "tragedy":
         result = 40000;
         if (aPerformance.audience > 30) {
@@ -29,20 +46,16 @@ function statement(invoice, plays) {
         result += 300 * aPerformance.audience;
         break;
       default:
-        throw new Error(`unknow type: ${playFor(aPerformance).type}`);
+        throw new Error(`unknow type: ${aPerformance.play.type}`);
     }
     return result;
-  }
-
-  function playFor(aPerformance) {
-    return plays[aPerformance.playID];
   }
 
   function volumeCreditsFor(aPerformance) {
     let result = 0;
     result += Math.max(aPerformance.audience - 30, 0);
 
-    if ('comedy' === playFor(aPerformance).type) {
+    if ('comedy' === aPerformance.play.type) {
       result += Math.floor(aPerformance.audience / 5);
     }
     return result;
@@ -58,7 +71,7 @@ function statement(invoice, plays) {
 
   function totalVolumeCredits() {
     let volumeCredits = 0;
-    for (let perf of invoice.performances) {
+    for (let perf of data.performances) {
       volumeCredits += volumeCreditsFor(perf);
     }
     return volumeCredits;
@@ -66,7 +79,7 @@ function statement(invoice, plays) {
 
   function totalAmount() {
     let result = 0;
-    for (let perf of invoice.performances) {
+    for (let perf of data.performances) {
       result += amountFor(perf);
     }
     return result;
