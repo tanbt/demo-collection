@@ -1,10 +1,10 @@
 import 'chai/register-expect.js';
-import { runApp } from '../src/app.js';
+import { renderConsole } from '../src/app.js';
 
 describe('Invoice calculator', function () {
 
   it('should print correct invoice details', function () {
-    const result = runApp();
+    const result = renderConsole();
     expect(result).to.be.equal(`
 Statement for BigCo
   Hamlet: $650.00 (55 seats)

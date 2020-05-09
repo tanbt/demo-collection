@@ -15,20 +15,18 @@ function renderPlainText(data) {
   result += `Amount owed is ${usd(data.totalAmount / 100)}\n`;
   result += `You earned ${data.totalVolumeCredits} credits\n`;
   return result;
-
-  
-  function usd(aNumber) {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 2
-    }).format(aNumber);
-  }
-
 };
 
-const runApp = () => {
+function usd(aNumber) {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2
+  }).format(aNumber);
+}
+
+const renderConsole = () => {
   return statement(getInvoices()[0], getPlays());
 };
 
-export { runApp };
+export { renderConsole };

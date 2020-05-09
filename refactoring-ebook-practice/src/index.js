@@ -6,5 +6,5 @@ setTimeout(() => {
   h1.innerText += " (from JS)";
 }, 1000);
 
-import {runApp} from './app.js';
-runApp();
+import {renderConsole} from './app.js';
+console.log(renderConsole());
