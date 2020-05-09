@@ -2,6 +2,14 @@ import getPlays from './data/plays.js';
 import getInvoices from './data/invoices.js';
 
 function statement(invoice, plays) {
+  let result = `\nStatement for ${invoice.customer}\n`;
+
+  for (let perf of invoice.performances) {
+    result += `  ${playFor(perf).name}: ${usd(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
+  }
+  result += `Amount owed is ${usd(totalAmount() / 100)}\n`;
+  result += `You earned ${totalVolumeCredits()} credits\n`;
+  return result;
 
   function amountFor(aPerformance) {
     let result = 0;
@@ -63,16 +71,6 @@ function statement(invoice, plays) {
     }
     return result;
   }
-
-  let result = `\nStatement for ${invoice.customer}\n`;
-
-  for (let perf of invoice.performances) {
-    result += `  ${playFor(perf).name}: ${usd(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
-  }
-
-  result += `Amount owed is ${usd(totalAmount() / 100)}\n`;
-  result += `You earned ${totalVolumeCredits()} credits\n`;
-  return result;
 };
 
 const runApp = () => {
