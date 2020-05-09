@@ -1,5 +1,5 @@
 import 'chai/register-expect.js';
-import { renderConsole } from '../src/app.js';
+import { renderConsole } from '../src/statement.js';
 
 describe('Invoice calculator', function () {
 

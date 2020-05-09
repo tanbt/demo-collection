@@ -6,10 +6,10 @@ setTimeout(() => {
   h1.innerText += " (from JS)";
 }, 500);
 
-import {renderConsole} from './app.js';
+import {renderConsole} from './statement.js';
 console.log(renderConsole());
 
 (async() => {
-  const app = await import('./app.js');
+  const app = await import('./statement.js');
   document.getElementById('placeholder').innerHTML = app.printHtml();
 })();
