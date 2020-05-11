@@ -1,4 +1,4 @@
-import PerformanceCalculator from './PerformanceCalculator.js';
+import { createPerformanceCalculator } from './PerformanceCalculator.js';
 
 export default function createStatementData(invoice, plays) {
   const statementData = {};
@@ -9,7 +9,7 @@ export default function createStatementData(invoice, plays) {
   return statementData;
 
   function enrichPerformance(aPerformance) {
-    const calculator = new PerformanceCalculator(aPerformance, playFor(aPerformance));
+    const calculator = createPerformanceCalculator(aPerformance, playFor(aPerformance));
     const result = Object.assign({}, aPerformance);
     result.play = calculator.play;
     result.amount = calculator.amount;

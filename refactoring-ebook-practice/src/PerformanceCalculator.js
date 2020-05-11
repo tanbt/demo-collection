@@ -1,4 +1,8 @@
-export default class PerformanceCalculator {
+function createPerformanceCalculator(aPerformance, aPlay) {
+  return new PerformanceCalculator(aPerformance, aPlay);
+}
+
+class PerformanceCalculator {
   constructor(aPerformance, aPlay) {
     this.performance = aPerformance;
     this.play = aPlay;
@@ -37,3 +41,5 @@ export default class PerformanceCalculator {
     return result;
   }
 };
+
+export { createPerformanceCalculator };
