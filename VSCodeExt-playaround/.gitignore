@@ -1,0 +1,12 @@
+out
+dist
+node_modules
+.vscode-test/
+*.vsix
+examples/miserables/*.md
+.DS_Store
+
+**/out
+**/dist
+**/node_modules
+**/.vscode-test/
